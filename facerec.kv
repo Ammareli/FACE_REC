@@ -1,0 +1,43 @@
+ScreenManager_:
+	MainScreen:
+	View:
+
+
+
+
+
+<MainScreen>:
+	name: "main"
+	orientation: "vertical"
+
+	Label:
+		text: "Header"
+		size_hint: None,None
+		
+
+	Cam:
+	
+		
+
+		
+		
+	Boxlayout:
+		orientation: "vertical"
+		Label:
+			text: "DATA"	
+		MDRaisedButton:
+			text: "view"
+			on_press: app.root.current = "view_attandance"
+ 
+
+
+<View>:
+	name:"view_attandance"
+	MDRaisedButton:
+		on_press: app.root.current = "main"
+		
+
+
+
+
+

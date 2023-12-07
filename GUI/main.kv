@@ -1,0 +1,244 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+
+
+
+ScreenManager:
+    LoginScreen:
+    MainScreen:
+    View:
+
+
+                
+<LoginScreen>:
+    name: "login"
+    username: username
+    password: password
+
+    FitImage:
+        
+        source: r'bg_photos\tech.jpg'
+
+    BoxLayout:
+    MDCard:
+        orientation: "vertical"
+        padding: 0, 0, 0 , "36dp"
+        size_hint: .5, None
+        height: "500dp"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        elevation: 4
+        shadow_radius: 6
+        shadow_offset: 0, 5
+
+
+        MDBoxLayout:
+            orientation: "vertical" 
+
+
+            MDLabel:
+                text: "UCI BANK LIMITED"
+                size_hint: 1,1
+                height: "10dp"
+                halign: "center"
+                valign: "center"
+                bold: True
+                font_style: "H4"
+                font_name: r"fonts\batmfa__.ttf"
+
+
+
+
+                
+
+
+            MDTextField:
+
+                id: username
+                hint_text: "Username"
+                helper_text: "Invalid username or password"
+                helper_text_mode: "on_error"
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint_x: .5
+                error: root.error_username
+
+                on_text_validate: root.manager.current = "main" if root.auth() else "login"
+
+                
+            MDTextField:
+
+                id: password
+                hint_text: "Password"
+                helper_text: "Invalid username or password"
+                helper_text_mode: "on_error"
+                pos_hint: {"center_x": .5, "center_y": .5}
+                size_hint_x: .5
+                error: root.error_password
+                password: True
+
+                on_text_validate: root.manager.current = "main" if root.auth() else "login"
+
+
+            MDRaisedButton:
+                text: "Login"
+                pos_hint: {"center_x": .5}
+                on_press: root.manager.current = "main" if root.auth() else "login"
+                
+        MDFlatButton:
+            text: "FORGET PASSWORD"
+            theme_text_color: None
+            text_color: "blue"
+            pos_hint: {"center_x": .5}
+            size_hint: .4,.4
+            on_press: app.dialog_box()
+            
+<DrawerClickableItem@MDNavigationDrawerItem>
+    focus_color: "#e7e4c0"
+    unfocus_color: "#fffcf4"        
+
+<MainScreen>:
+    
+    name:"main"
+    
+    MDBoxLayout:
+
+        MDNavigationRail:
+            id: navigation_rail
+            md_bg_color: "#fffcf4"
+            selected_color_background: "#e7e4c0"
+            ripple_color_item: "#e7e4c0"
+            anchor: "center"
+            current_selected_item: -1
+            
+
+
+            MDNavigationRailMenuButton:
+                on_release: nav_drawer.set_state("open")
+
+
+            MDNavigationRailItem:
+                text: "View"
+                icon: "view-list"
+                on_release: root.manager.current ="view"
+
+            MDNavigationRailItem:
+                text: "LogOut"
+                icon: "logout"
+                on_press: root.manager.current ="login"
+        
+
+        MDBoxLayout:
+            orientation: "vertical"
+            Image:
+                source: r'bg_photos\logo.jpg'
+                
+                size_hint_y: None
+                height: "80dp"
+                
+            
+            MDBoxLayout:
+                Image:
+                    id: Video
+                    size_hint: 1,1
+                    allow_strech: True
+                    keep_ratio: False
+                    
+
+    MDNavigationDrawer:
+        id: nav_drawer
+        radius: (0, 16, 16, 0)
+        md_bg_color: "#fffcf4"
+        elevation: 4
+        width: "240dp"
+
+        MDNavigationDrawerMenu:
+
+            MDBoxLayout:
+                orientation: "vertical"
+                adaptive_height: True
+                spacing: "12dp"
+                padding: "3dp", 0, 0, "12dp"
+
+                MDIconButton:
+                    icon: "menu"
+
+                
+            MDNavigationDrawerLabel:
+                text: "Settings"
+
+            DrawerClickableItem:
+                text: "Change Password"
+                icon: "lock-reset"
+                on_press: app.dialog_box_reset_admin()
+
+            DrawerClickableItem:
+                text: "Set Time"
+                icon: "clock"
+                on_press: print("SET Time")            
+
+
+            DrawerClickableItem:
+                text: "Export Excel"
+                icon: "microsoft-excel"
+                on_press: print("Export Item")
+
+            MDNavigationDrawerDivider:
+
+            MDNavigationDrawerLabel:
+                text: "Info"
+            DrawerLabelItem:
+                icon: "information-outline"
+                text: "Start Time"
+
+            DrawerLabelItem:
+                icon: "information-outline"
+                text: "End Time"
+
+
+
+            
+<DrawerLabelItem@MDNavigationDrawerItem>
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    focus_behavior: False
+    selected_color: "#4a4939"
+    _no_ripple_effect: True
+
+
+<view>
+    name : "view"
+    MDBoxLayout:
+        padding: 20
+        orientation: "vertical"
+
+        MDScrollView:
+            GridLayout:
+                id: container
+                cols: 1
+                spacing: dp(10)
+                size_hint_y: None
+                height: self.minimum_height
+
+
+    MDBottomAppBar:
+        MDTopAppBar:
+            elevation: 1
+            title: "view"
+            icon: "arrow-left"
+            type: "bottom"
+            mode: "end"
+            on_action_button:  root.manager.current = "main"
+
+        
+      
+    
+
+
+
+
+
+
+
+
+
+    
+        
