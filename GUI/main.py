@@ -307,7 +307,7 @@ class MainScreen(Screen):
         self.capture = cv2.VideoCapture(0)
         self.employess_list = []
 
-        self.cascade = cv2.CascadeClassifier("D:\Bank FaceRecognization\haarcascade_frontalface_alt.xml")
+        self.cascade = cv2.CascadeClassifier("haarcascade_frontalface_alt.xml")
 
     def start_vedio(self):
         self.event = Clock.schedule_interval(self.update, 1.0 / 30.0)
@@ -451,14 +451,14 @@ class MainApp(MDApp):
     def build(self):
 
         # Create the screen manager
-        app = Builder.load_file(r"D:\Bank FaceRecognization\GUI\main.kv")
+        app = Builder.load_file(r"GUI\main.kv")
 
 
         return app
     
     def dialog_box(self):
         self.dialog = MDDialog(title = "Enter Code",
-                                content_cls=ResetScreen(), 
+                                content_cls=Content(), 
                                 size_hint=(0.4, 1),
                                 type="custom",
                                buttons=[MDRaisedButton(text='Close', on_release=self.dialog_close)
