@@ -1,4 +1,4 @@
-# sample project
+# This is My Personal project.
 # Face Recognition via Deep Learning
 
 ## Project Overview
