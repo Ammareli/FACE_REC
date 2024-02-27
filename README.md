@@ -29,7 +29,9 @@ Ensure you have Python installed on your system. You will also need to install t
 pip install dlib
 pip install opencv-python
 pip install kivy
+```
 # output
+
 ![project_pic](https://github.com/Ammareli/BANK-faceRec/assets/134202138/0cd1ad57-4266-4dfa-8c87-e784a8304c8b)
 
 
