@@ -14,7 +14,7 @@ This project leverages deep learning algorithms for face recognition using the D
 
 ## Technologies Used
 
-- **Dlib**: For face detection and feature extraction.
+- **Dlib**: For face detection and feature extraction to compare face vectors.
 - **OpenCV (cv2)**: For image processing and additional computer vision tasks.
 - **Kivy**: For creating a responsive and functional frontend.
 - **Python**: The primary programming language used for developing this project.
